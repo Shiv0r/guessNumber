@@ -2,8 +2,9 @@
 /// <reference lib="dom" />
 
 
-// HELPER FUNCTIONS
-const getRandomNum = Math.floor(Math.random() * 10);
+
+
+//display number default
 const numberElement = document.getElementById('show-number');
 const numberDisplayDefault = '?'
 
@@ -36,6 +37,7 @@ buttonElement?.addEventListener('click', isUserWinning)
 
 function isUserWinning()
 {
+    const getRandomNum = Math.floor(Math.random() * 10);
     const isInRange = inputData  < 10 && inputData  >= 0;
     const inputIsNaN = Number.isNaN(inputData);
     const isEmpty = inputData === -0.001;
