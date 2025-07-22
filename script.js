@@ -1,8 +1,9 @@
 // @ts-check
 /// <reference lib="dom" />
 
-
-
+let getRandomNum = 0;
+const generateRandomNum = Math.floor(Math.random() * 10);
+getRandomNum = generateRandomNum;
 
 //display number default
 const numberElement = document.getElementById('show-number');
@@ -37,7 +38,6 @@ buttonElement?.addEventListener('click', isUserWinning)
 
 function isUserWinning()
 {
-    const getRandomNum = Math.floor(Math.random() * 10);
     const isInRange = inputData  < 10 && inputData  >= 0;
     const inputIsNaN = Number.isNaN(inputData);
     const isEmpty = inputData === -0.001;
@@ -75,8 +75,7 @@ function isUserWinning()
 
 
     //determines if the user won or not
-    const distance = Math.abs(getRandomNum - inputData);
-    const isPCWinning = distance < 2;
+    const isPCWinning = getRandomNum === inputData;
 
     if(isPCWinning && numberElement && notificationElement)
     {
@@ -84,6 +83,7 @@ function isUserWinning()
         notificationElement.textContent = 'You won!';
         notificationElement.style.fontWeight = '700';
         notificationElement.style.color = 'green'
+        getRandomNum = generateRandomNum;
     }
     else if(!isPCWinning && numberElement && notificationElement)
     {
