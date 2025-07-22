@@ -2,8 +2,13 @@
 /// <reference lib="dom" />
 
 let getRandomNum = 0;
-const generateRandomNum = Math.floor(Math.random() * 10);
-getRandomNum = generateRandomNum;
+function generateRandomNum()
+{
+    return Math.floor(Math.random() * 10);
+}
+getRandomNum = generateRandomNum();
+
+
 
 //display number default
 const numberElement = document.getElementById('show-number');
@@ -42,7 +47,7 @@ function isUserWinning()
     const inputIsNaN = Number.isNaN(inputData);
     const isEmpty = inputData === -0.001;
 
-    // Print error messages for the user if input number is out of range ot not typed
+    // Print error messages for the user if input number is out of range or not typed
     if((isEmpty || inputIsNaN) && notificationElement && boldElement)
     {
 
@@ -83,7 +88,7 @@ function isUserWinning()
         notificationElement.textContent = 'You won!';
         notificationElement.style.fontWeight = '700';
         notificationElement.style.color = 'green'
-        getRandomNum = generateRandomNum;
+        getRandomNum = generateRandomNum();
     }
     else if(!isPCWinning && numberElement && notificationElement)
     {
